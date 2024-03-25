@@ -18,7 +18,7 @@ async function getWeatherData(url) {
     const ourTemperature = weatherData.properties.periods[0].temperature;
     document.querySelector("#temperature-output").textContent = ourTemperature;
   } catch (error) {
-    console.log(`Something went wrong: ${error}`);
+    console.log(`Something went wrong fetching weather data: ${error}`);
   }
 }
 
@@ -28,13 +28,23 @@ getWeatherData(weatherUrl);
 
 const petsUrl = "https://learnwebcode.github.io/bootcamp-pet-data/pets.json";
 
-async function petsArea() {
+async function petsArea(url) {
+  /*
   const petsPromise = await fetch(
     "https://learnwebcode.github.io/bootcamp-pet-data/pets.json"
   );
-  const petsData = await petsPromise.json();
+*/
 
-  console.log(petsData[0]);
+  let petsData = null;
+
+  try {
+    const petsPromise = await fetch(url);
+    petsData = await petsPromise.json();
+
+    //console.log(petsData[0]);
+  } catch (e) {
+    console.log(`Something went wrong fetching pets data: ${error}`);
+  }
 
   petsData.forEach(pet => {
     const clone = template.content.cloneNode(true);
@@ -58,7 +68,7 @@ async function petsArea() {
   document.querySelector(".list-of-pets").appendChild(wrapper);
 }
 
-petsArea();
+petsArea(petsUrl);
 
 function createAgeText(birthYear) {
   const currentYear = new Date().getFullYear();
