@@ -1,3 +1,5 @@
+// Dynamic Weather Info
+
 const weatherUrl = "https://api.weather.gov/gridpoints/MFL/110,50/forecast";
 
 async function getWeatherData(url) {
@@ -17,3 +19,22 @@ async function getWeatherData(url) {
 }
 
 getWeatherData(weatherUrl);
+
+// Pets Area
+
+const petsUrl = "https://learnwebcode.github.io/bootcamp-pet-data/pets.json";
+
+async function petsArea() {
+  const petsPromise = await fetch(
+    "https://learnwebcode.github.io/bootcamp-pet-data/pets.json"
+  );
+  const petsData = await petsPromise.json();
+
+  console.log(petsData[0]);
+
+  petsData.forEach(pet => {
+    console.log(pet.name);
+  });
+}
+
+petsArea();
