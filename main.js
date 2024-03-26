@@ -26,7 +26,11 @@ getWeatherData(weatherUrl);
 
 // Pets Area
 
-const petsUrl = "https://learnwebcode.github.io/bootcamp-pet-data/pets.json";
+//const petsUrl = "https://learnwebcode.github.io/bootcamp-pet-data/pets.json";
+
+// link to netlify site
+const petsUrl =
+  "https://comforting-salmiakki-631576.netlify.app/.netlify/functions/pets";
 
 async function petsArea(url) {
   /*
